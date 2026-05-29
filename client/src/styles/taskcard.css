@@ -1,0 +1,52 @@
+.task-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #ffffff;
+    transition: box-shadow 0.2s;
+}
+
+.task-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.priority-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.priority-dot.oggi { background-color: #ff4757; }
+.priority-dot.domani { background-color: #ffa502; }
+.priority-dot.dopo { background-color: #2ed573; }
+
+.badge-category {
+    border-radius: 20px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.badge-category.lavoro { background-color: #e8f4fd; color: #0984e3; }
+.badge-category.università { background-color: #f0efff; color: #6c63ff; }
+.badge-category.personale { background-color: #e8fdf5; color: #00b894; }
+.badge-category.altro { background-color: #f5f5f5; color: #888888; }
+
+.badge-priority {
+    border-radius: 20px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: #fff3e0;
+    color: #e65100;
+}
+
+.btn-complete { background-color: #2ed573; color: white; border: none; }
+.btn-complete:hover { background-color: #26c065; color: white; }
+.btn-postpone { border: 1px solid #cccccc; background: white; }
+.btn-postpone:hover { background-color: #f5f5f5; }
+.btn-delete { border: 1px solid #ff4757; color: #ff4757; background: white; }
+.btn-delete:hover { background-color: #ff4757; color: white; }

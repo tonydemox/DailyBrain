@@ -1,0 +1,32 @@
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #ffffff;
+    border-right: 1px solid #eeeeee;
+}
+
+.sidebar-logo {
+    color: #black;
+    font-weight: bold;
+}
+
+.sidebar-link {
+    cursor: pointer;
+    border-radius: 8px;
+    color: #555555;
+    transition: background-color 0.2s;
+}
+
+.sidebar-link:hover {
+    background-color: #f0efff;
+    color: #6c63ff;
+}
+
+.sidebar-link.active {
+    background-color: #f0efff;
+    color: #6c63ff;
+    font-weight: 600;
+}

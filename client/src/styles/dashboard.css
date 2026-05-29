@@ -1,0 +1,28 @@
+.dashboard-header {
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-title {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.dashboard-empty {
+    text-align: center;
+    padding: 3rem;
+    color: #888888;
+}
+
+.btn-focus {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-focus:hover {
+    background-color: #5a52d5;
+    color: white;
+}

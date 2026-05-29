@@ -1,0 +1,127 @@
+.home-title {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.home-textarea {
+    border: none;
+    outline: none;
+    box-shadow: none !important;
+    resize: none;
+    font-size: 1rem;
+}
+
+.btn-primary-custom {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+.btn-primary-custom:hover {
+    background-color: #5a52d5;
+    color: white;
+}
+
+.home-filter {
+    color: #888888;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.home-filter:hover {
+    background-color: #f0efff;
+    color: #6c63ff;
+}
+
+.home-task-item:last-child {
+    border-bottom: none !important;
+}
+
+.home-stat-card {
+    background-color: #f8f9fa;
+    transition: box-shadow 0.2s;
+}
+
+.home-stat-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.home-priority-alta { color: #ff4757; }
+.home-priority-media { color: #ffa502; }
+.home-priority-bassa { color: #2ed573; }
+
+.home-category-lavoro { color: #0984e3; }
+.home-category-università { color: #6c63ff; }
+.home-category-personale { color: #00b894; }
+.home-category-altro { color: #888888; }
+
+.home-link {
+    color: #6c63ff;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.home-link:hover {
+    color: #5a52d5;
+}
+
+.home-bell {
+    cursor: pointer;
+    color: #888888;
+    font-size: 1.2rem;
+}
+
+.badge-count {
+    background-color: #6c63ff;
+}
+
+.project-card {
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    background-color: #f8f9fa;
+    transition: box-shadow 0.2s;
+}
+
+.project-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.project-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.project-icon.lavoro { background-color: #e8f4fd; }
+.project-icon.università { background-color: #f0efff; }
+.project-icon.personale { background-color: #e8fdf5; }
+.project-icon.altro { background-color: #f5f5f5; }
+
+.progress-bar-custom {
+    height: 6px;
+    border-radius: 3px;
+    background-color: #eeeeee;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s;
+}
+
+.progress-fill.lavoro { background-color: #0984e3; }
+.progress-fill.università { background-color: #6c63ff; }
+.progress-fill.personale { background-color: #00b894; }
+.progress-fill.altro { background-color: #888888; }
