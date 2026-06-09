@@ -10,6 +10,8 @@ const planRoutes = require('./routes/planRoutes');
 const errorHandler = require('./middleware/errorHandler');
 const validateRequest = require('./middleware/validateRequest');
 const authMiddleware = require('./middleware/authMiddleware');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./config/swagger');
 require('dotenv').config();
 
 const app = express();
@@ -28,6 +30,7 @@ connectDB();
 
 app.use(cors());
 app.use(express.json());
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/sessions', authMiddleware, validateRequest, sessionRoutes);
