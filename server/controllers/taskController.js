@@ -93,6 +93,15 @@ const updateTask = async (req, res, next) => {
 
         if (!task) return res.status(404).json({ error: 'Task non trovato' });
 
+        const io = req.app.get('io');
+        io.to(req.userId.toString()).emit('task:updated', task);
+
+        if (update.status === 'done') {
+            io.to(req.userId.toString()).emit('notification', {
+                message: `✅ Task completato: ${task.text}`
+            });
+        }
+
         res.json(task);
     } catch (err) {
         next(err);
@@ -103,12 +112,15 @@ const deleteTask = async (req, res, next) => {
     try {
         const task = await Task.findOneAndDelete({ _id: req.params.id, userId: req.userId });
         if (!task) return res.status(404).json({ error: 'Task non trovato' });
+
+        const io = req.app.get('io');
+        io.to(req.userId.toString()).emit('task:deleted', req.params.id);
+
         res.json({ message: 'Task eliminato' });
     } catch (err) {
         next(err);
     }
 };
-
 
 
 

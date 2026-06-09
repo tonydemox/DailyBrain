@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { getAllTasks, getTasks, getPostponed, getStatistics } from '../services/api';
+import { useSocket } from './SocketContext.jsx';
 
 const TaskContext = createContext();
 
@@ -9,6 +10,7 @@ export function TaskProvider({ children }) {
     const [postponedTasks, setPostponedTasks] = useState([]);
     const [statistics, setStatistics] = useState(null);
     const [loading, setLoading] = useState(false);
+    const { socket } = useSocket();
 
     const refreshTasks = useCallback(async () => {
         setLoading(true);
@@ -29,6 +31,21 @@ export function TaskProvider({ children }) {
             setLoading(false);
         }
     }, []);
+
+    // aggiorna automaticamente quando arrivano eventi Socket.IO
+    useEffect(() => {
+        if (!socket) return;
+
+        socket.on('task:updated', () => refreshTasks());
+        socket.on('task:deleted', () => refreshTasks());
+        socket.on('tasks:new', () => refreshTasks());
+
+        return () => {
+            socket.off('task:updated');
+            socket.off('task:deleted');
+            socket.off('tasks:new');
+        };
+    }, [socket, refreshTasks]);
 
     return (
         <TaskContext.Provider value={{

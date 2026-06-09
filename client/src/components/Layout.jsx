@@ -1,4 +1,5 @@
 import Sidebar from './Sidebar';
+import NotificationToast from './NotificationToast.jsx';
 import '../styles/layout.css';
 
 function Layout({ children }) {
@@ -8,6 +9,7 @@ function Layout({ children }) {
             <div className="layout-content">
                 {children}
             </div>
+            <NotificationToast />
         </div>
     );
 }

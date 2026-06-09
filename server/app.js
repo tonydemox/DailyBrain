@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const http = require('http');
+const { Server } = require('socket.io');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const taskRoutes = require('./routes/taskRoutes');
@@ -11,6 +13,16 @@ const authMiddleware = require('./middleware/authMiddleware');
 require('dotenv').config();
 
 const app = express();
+const server = http.createServer(app);
+
+const io = new Server(server, {
+    cors: {
+        origin: '*',
+        methods: ['GET', 'POST', 'PUT', 'DELETE']
+    }
+});
+
+app.set('io', io);
 
 connectDB();
 
@@ -24,4 +36,17 @@ app.use('/api/plan', authMiddleware, planRoutes);
 
 app.use(errorHandler);
 
-module.exports = app;
+io.on('connection', (socket) => {
+    console.log('✅ Client connesso:', socket.id);
+
+    socket.on('join', (userId) => {
+        socket.join(userId);
+        console.log(`👤 Utente ${userId} nella sua stanza`);
+    });
+
+    socket.on('disconnect', () => {
+        console.log('❌ Client disconnesso:', socket.id);
+    });
+});
+
+module.exports = { app, server, io };

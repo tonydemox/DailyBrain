@@ -22,8 +22,20 @@ const createSession = async (req, res, next) => {
         session.tasks = savedTasks.map(t => t._id);
         await session.save();
 
-        res.json({  session, tasks: savedTasks });
-    }catch (err) {
+
+        const io = req.app.get('io');
+        io.to(req.userId.toString()).emit('tasks:new', savedTasks);
+
+
+        const urgentTasks = savedTasks.filter(t => t.priority === 'oggi');
+        if (urgentTasks.length > 0) {
+            io.to(req.userId.toString()).emit('notification', {
+                message: `🔴 Hai ${urgentTasks.length} task urgenti per oggi!`
+            });
+        }
+
+        res.json({ session, tasks: savedTasks });
+    } catch (err) {
         next(err);
     }
 };
